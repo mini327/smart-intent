@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "smart-intent": {
+      "command": "D:/tools/smart-intent/.venv/Scripts/python.exe",
+      "args": [
+        "-X", "utf8", "-m", "smart_intent",
+        "--config", "D:/tools/smart-intent/config/local.toml"
+      ]
+    }
+  }
+}

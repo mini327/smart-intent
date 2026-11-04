@@ -1,0 +1,16 @@
+.venv/
+.wheel-smoke/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.sqlite3*
+dist/
+.uv-cache/
+.uv-python/
+config/local.toml
+config/*.local.toml
+docs/_qa/
+docs/_build_prd.py
+data/
+.test-tmp*/

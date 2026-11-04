@@ -115,4 +115,3 @@ wheel 包用于安装服务；Skill、配置样例与接入说明在仓库或源
 - [Word 产品需求](docs/SmartIntent_产品需求文档.docx)
 - [验证与兼容记录](docs/验证记录.md)
 - [宿主效果评测方法](evals/README.md)
-

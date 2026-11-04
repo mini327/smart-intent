@@ -1,0 +1,25 @@
+# Replace absolute paths before use. Context is not persisted by default.
+schema_version = 1
+principal_id = "local-user"
+project_id = "your-project"
+project_root = "D:/your-project"
+timezone = "Asia/Shanghai"
+
+[context]
+mode = "ephemeral"
+ttl_seconds = 86400
+
+[[sources]]
+id = "project-events"
+path = "D:/your-project/data/events.jsonl"
+allowed_root = "D:/your-project/data"
+classification = "real"
+
+[sources.fields]
+record_id = "id"
+target_id = "target_id"
+target_name = "target_name"
+timestamp = "occurred_at"
+status = "status"
+category = "category"
+summary = "summary"
