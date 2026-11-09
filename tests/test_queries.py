@@ -80,7 +80,9 @@ def test_snapshot_pagination_ignores_later_append_and_rejects_tampering(factory,
     assert second.data["matched_count"] == 4
     assert second.sources[0]["content_sha256"] == original_hash
     assert len(second.data["records"]) == 2
-    bad = {**args, "cursor": "X" + cursor[1:]}
+    # Always change the token: a random valid token can already begin with X.
+    replacement = "B" if cursor[0] == "A" else "A"
+    bad = {**args, "cursor": replacement + cursor[1:]}
     assert app.call("query_records", bad).error.code == "cursor_invalid"
     changed = copy.deepcopy(args)
     changed["plan"]["filters"] = {"status": ["failed"]}
