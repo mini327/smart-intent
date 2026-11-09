@@ -73,7 +73,15 @@ Skill 单独按宿主支持的方式加载 [SKILL.md](SKILL.md)。加载 Skill �
 
 聚合使用 `action=aggregate` 与 `aggregation={"count_by":"category","top_k":5}`，支持 category 或 status 分组。按次数倒序，并按分组键处理并列。插件不自动判定哪些状态代表故障，调用者须明确过滤。
 
-分页使用上一页 `data.normalized_plan` 及 `data.next_cursor`，固定绝对时间和源快照；修改计划、换任务或游标过期需从头重查。`complete` 仅指选定快照内的匹配结果已取完，不能证明外部全部业务系统的覆盖情况。
+分页使用上一页 `data.normalized_plan` 及 `data.next_cursor`，固定绝对时间和源快照。历史游标在快照仍有效且绑定条件匹配时可复用；客户端需缓存首屏才能回到原快照首屏。游标失效后应明确结束旧分页再重新查询。`complete` 仅指选定快照内的匹配结果已取完，不能证明外部全部业务系统的覆盖情况。
+
+可运行的 MCP 分页示例：
+
+```powershell
+uv run --frozen python -X utf8 scripts/paginate_records.py --config config/demo.local.toml --source demo-events --page-size 2
+```
+
+输入 `n` 下一页、`p` 上一页、`q` 退出。示例保存历史页及首屏，显示来源标识；详见[分页与运行边界](docs/分页与运行边界.md)。
 
 ## 真实数据配置
 
@@ -114,4 +122,5 @@ wheel 包用于安装服务；Skill、配置样例与接入说明在仓库或源
 - [实现方案](docs/SmartIntent_实现方案.md)
 - [Word 产品需求](docs/SmartIntent_产品需求文档.docx)
 - [验证与兼容记录](docs/验证记录.md)
+- [分页示例、缓存与超时边界](docs/分页与运行边界.md)
 - [宿主效果评测方法](evals/README.md)

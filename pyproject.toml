@@ -32,4 +32,4 @@ select = ["E", "F", "I", "UP", "B"]
 packages = ["src/smart_intent"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/scripts", "/config/smart-intent.example.toml", "/integrations", "/examples", "/SKILL.md", "/README.md", "/pyproject.toml", "/uv.lock"]
+include = ["/src", "/tests", "/scripts", "/docs/*.md", "/config/smart-intent.example.toml", "/integrations", "/examples", "/SKILL.md", "/README.md", "/pyproject.toml", "/uv.lock"]
